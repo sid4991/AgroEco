@@ -268,4 +268,3 @@ Export.image.toDrive({
     scale: 10,
     maxPixels: 1e9
 })
-
