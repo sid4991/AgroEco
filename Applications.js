@@ -207,3 +207,5 @@ Map.addLayer(classified,
              {min: 0, max: 2, palette: ['red', 'green', 'blue']},
              'classification');
 Map.addLayer(points);
+
+// Burn Area
