@@ -307,3 +307,25 @@ var cloudlessNDVI = l8.map(function(image) {
 });
 
 
+print(ui.Chart.image.series({
+  imageCollection: cloudlessNDVI.select('NDVI'),
+  region: roi,
+  reducer: ee.Reducer.first(),
+  scale: 30
+}).setOptions({title: 'Cloud-masked NDVI over time'}));
+
+//Exporting Image
+
+var greenest = cloudlessNDVI.qualityMosaic('NDVI');
+// Create a 3-band, 8-bit, color-IR composite to export.
+var visualization = greenest.visualize({
+  bands: ['B5', 'B4', 'B3'],
+  max: 0.4
+});
+
+// Create a task that you can launch from the Tasks tab.
+Export.image.toDrive({
+  image: visualization,
+  description: 'Greenest_pixel_composite',
+  scale: 30
+});
