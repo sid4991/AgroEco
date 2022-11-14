@@ -317,6 +317,43 @@ var classified = composite.classify(classifier);
 
 Map.addLayer(classified, {min: 0, max: 3, palette: ['gray', 'brown', 'blue', 'green']}, '2019');
 
+// adding legend is bit complicated showing you how to do it
+
+var legend = ui.Panel({style: {position: 'middle-right', padding: '8px 15px'}});
+
+var makeRow = function(color, name) {
+  var colorBox = ui.Label({
+    style: {color: '#ffffff',
+      backgroundColor: color,
+      padding: '10px',
+      margin: '0 0 4px 0',
+    }
+  });
+  var description = ui.Label({
+    value: name,
+    style: {
+      margin: '0px 0 4px 6px',
+    }
+  }); 
+  return ui.Panel({
+    widgets: [colorBox, description],
+    layout: ui.Panel.Layout.Flow('horizontal')}
+)};
+
+var title = ui.Label({
+  value: 'Legend',
+  style: {fontWeight: 'bold',
+    fontSize: '16px',
+    margin: '0px 0 4px 0px'}});
+    
+legend.add(title);
+legend.add(makeRow('gray','Built-up'))
+legend.add(makeRow('brown','Bare Earth'))
+legend.add(makeRow('blue','Water'))
+legend.add(makeRow('green','Vegetation'))
+
+Map.add(legend);
+
 //************************************************************************** 
 // Accuracy Assessment
 //************************************************************************** 
