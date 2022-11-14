@@ -1,6 +1,5 @@
 // line 3-206 we are creating labels for urban,bare, water,vegetation
-
-//
+// Modified only resources
 var bangalore = ee.FeatureCollection("users/ujavalgandhi/public/bangalore_boundary"),
     urban = /* color: #cad6c9 */ee.FeatureCollection(
         [ee.Feature(
